@@ -193,6 +193,10 @@ background: linear-gradient(to bottom, #000000, #0b2342);
   text-align: center;
 }
 
+.footer-text p {
+  text-align: left;
+}
+
 /* pages */
 .content-section {
   padding: 30px 0;
