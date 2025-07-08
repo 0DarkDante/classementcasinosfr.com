@@ -13,7 +13,7 @@ p {
   margin: 0;
 }
 a:hover {
-  color: #235392;
+  color: #FFD700;;
 }
 a,
 ul,
@@ -22,7 +22,7 @@ li {
   font-style: normal;
   list-style: none;
   padding: 0;
-  color: inherit;
+  color: #f28d8d;;
 }
 .container {
   margin: 0 auto;
@@ -41,18 +41,43 @@ li {
 }
 .nav-list {
   display: flex;
-  gap: 20px;
+  gap: 24px;
   text-transform: uppercase;
   font-weight: 600;
-}
-.nav-list > li {
-  border-bottom: solid 3px #2653ac;
+  font-size: 16px;
+  list-style: none;
+  padding: 0;
 }
 
+.nav-list>li>a {
+  color: #000;
+  /* Слонова кістка */
+  text-decoration: none;
+  padding-bottom: 8px;
+  display: inline-block;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.nav-list>li {
+  border-bottom: 3px solid transparent;
+}
+
+.nav-list>li:hover {
+  border-bottom-color: #FFD700;
+  /* Золото */
+}
+
+.nav-list>li>a:hover {
+  color: #FFD700;
+  /* Золото при наведенні */
+}
 .hero {
-background: linear-gradient(to bottom, #000000, #0b2342);
-  color: #eee;
+  background: linear-gradient(to bottom, #121212, #3b0a0a);
+  color: #F5F5F5;
+  /* слонова кістка */
   font-size: 40px;
+  padding: 60px 20px;
+  text-align: center;
 }
 
 .hero > .container {
@@ -105,16 +130,28 @@ background: linear-gradient(to bottom, #000000, #0b2342);
   margin: 10px 0;
 }
 .button {
-  background-color: #00bcff;
+  background-color: #C62828;
+  /* рубіновий червоний */
   padding: 10px 15px;
   border-radius: 10px;
   line-height: 1.8;
-  border: solid 2px #0060af;
+  border: solid 2px #CD7F32;
+  /* бронза */
   text-transform: uppercase;
+  color: #F5F5F5;
+  /* слонова кістка */
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
+
 .button:hover {
-  background-color: #3d62e9;
-  color: #ffffff;
+  background-color: #A32020;
+  /* темніший червоний */
+  border-color: #FFD700;
+  /* золото */
+  color: #FFD700;
+  /* текст — золото */
 }
 
 .comment,
@@ -175,8 +212,9 @@ background: linear-gradient(to bottom, #000000, #0b2342);
   width: 100%;
 }
 .footer-content {
-  background-color: #062b72;
-  color: #eee;
+  background-color: #121212;
+    /* чорний оксамит */
+    color: #F5F5F5;
 }
 .footer-cooperation {
   text-align: center;
@@ -259,391 +297,286 @@ background: linear-gradient(to bottom, #000000, #0b2342);
 /* Банер кукі - початковий стан: прихований через opacity та pointer-events */
 #cookie-banner {
   position: fixed;
-  bottom: 20px;
-  left: 20px;
-  right: 20px;
-  max-width: 900px;
-  margin: 0 auto;
-  
-  background-color: #0e2c71; /* Темно-синій фон */
-  color: #fff;
-  padding: 20px 25px;
-  border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 1rem;
-
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.4s ease;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #1e1e1e;
+  /* Темний фон */
+  color: #F5F5F5;
+  /* Слонова кістка */
+  padding: 20px;
+  font-size: 16px;
+  text-align: center;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
   z-index: 9999;
+  border-top: 2px solid #CD7F32;
+  /* Бронзова лінія зверху */
 }
 
-/* Видимий банер */
-#cookie-banner.visible {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-/* Кнопки */
 .cookie-buttons {
+  margin-top: 15px;
   display: flex;
-  gap: 10px;
+  justify-content: center;
+  gap: 15px;
 }
 
 .btn {
-  padding: 10px 18px;
-  font-size: 1rem;
+  padding: 10px 20px;
+  border-radius: 6px;
   font-weight: 600;
-  border-radius: 5px;
+  text-transform: uppercase;
   cursor: pointer;
-  border: none;
-  transition: background-color 0.3s ease;
-  color: #fff;
+  transition: all 0.3s ease;
 }
 
+/* Кнопка "J’accepte" */
 .btn-accept {
-  background-color: #0b6632;
+  background-color: #C62828;
+  /* рубіновий */
+  color: #F5F5F5;
+  border: 2px solid #C62828;
 }
 
 .btn-accept:hover {
-  background-color: #27ae60;
+  background-color: #A32020;
+  border-color: #FFD700;
+  /* золото */
+  color: #FFD700;
 }
 
+/* Кнопка "Je refuse" */
 .btn-reject {
-  background-color: #8c382f;
+  background-color: transparent;
+  color: #F5F5F5;
+  border: 2px solid #CD7F32;
+  /* бронза */
 }
 
 .btn-reject:hover {
-  background-color: #c0392b;
-}
-
-/* Адаптивність для мобільних */
-@media (max-width: 600px) {
-  #cookie-banner {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 15px 20px;
-  }
-  .cookie-buttons {
-    justify-content: flex-start;
-    width: 100%;
-  }
-  #cookie-banner p {
-    margin-bottom: 10px;
-  }
+  background-color: #CD7F32;
+  color: #121212;
 }
 
 
 
-/* Стилі для повноекранного попапу */
-.age-popup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.95);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 100000;
-}
+/* Стилі для модалки контактів */
+    /* Оверлей модалки */
+    .overlay-custom {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(18, 18, 18, 0.95);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+      z-index: 9999;
+    }
+  
+    .overlay-custom.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  
+    /* Вміст модалки */
+    .modal-box-custom {
+      background-color: #1e1e1e;
+      border: 2px solid #CD7F32;
+      /* бронза */
+      border-radius: 12px;
+      padding: 40px 30px;
+      max-width: 400px;
+      width: 90%;
+      color: #F5F5F5;
+      text-align: center;
+      box-sizing: border-box;
+      box-shadow: 0 12px 30px rgba(0, 40, 80, 0.7);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+  
+    /* Поля форми */
+    .input-custom,
+    .textarea-custom {
+      width: 100%;
+      margin: 12px 0;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      border: 1.5px solid #B71C1C;
+      /* темно-червоний */
+      background-color: #4A1A1A;
+      /* темний червоний фон */
+      color: #F5D6D6;
+      /* світло-рожевий текст */
+      font-size: 1rem;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease, background-color 0.3s ease;
+    }
+  
+    .input-custom::placeholder,
+    .textarea-custom::placeholder {
+      color: #E57373;
+      /* світло-червоний */
+      opacity: 1;
+    }
+  
+    .input-custom:focus,
+    .textarea-custom:focus {
+      outline: none;
+      border-color: #E53935;
+      /* яскраво-червоний */
+      background-color: #7F1A1A;
+      /* насичений темний червоний */
+      color: #FFEBEE;
+      /* дуже світлий рожево-червоний */
+    }
+  
+    .textarea-custom {
+      resize: vertical;
+      min-height: 120px;
+      max-height: 180px;
+      overflow-y: auto;
+    }
+  
+    /* Кнопки */
+    .button-group-custom {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+  
+    .btn-submit-custom,
+    .btn-close-custom {
+      flex: 1;
+      padding: 0.75rem 1.2rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      text-transform: uppercase;
+      border: none;
+      transition: background-color 0.3s ease;
+    }
+  
+    .btn-submit-custom {
+      background-color: #C62828;
+      /* основний червоний */
+      color: white;
+      border: 2px solid #C62828;
+    }
+  
+    .btn-submit-custom:hover {
+      background-color: #D32F2F;
+      /* трохи світліший */
+    }
+  
+    .btn-close-custom {
+      background: transparent;
+      border: 2px solid #CD7F32;
+      /* залишаємо бронзу */
+      color: #F5F5F5;
+    }
+  
+    .btn-close-custom:hover {
+      background-color: #CD7F32;
+      color: #121212;
+    }
 
-.age-popup-content {
-  background-color: #004080;
-  padding: 40px 60px;
-  border-radius: 12px;
-  text-align: center;
-  color: white;
-  max-width: 400px;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.age-popup-content h1 {
-  margin-bottom: 20px;
-  font-size: 2.5rem;
-}
-
-.age-popup-content p {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-}
-
-.age-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-.btn {
-  padding: 12px 24px;
-  font-size: 1rem;
-  font-weight: 600;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.btn-yes {
-  background-color: #2ecc71;
-  color: white;
-}
-
-.btn-yes:hover {
-  background-color: #27ae60;
-}
-
-.btn-no {
-  background-color: #e74c3c;
-  color: white;
-}
-
-.btn-no:hover {
-  background-color: #c0392b;
-}
-
-/* Фон модалки */
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(10, 25, 50, 0.85);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10000;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.35s ease;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* Активна модалка */
-.modal-overlay.active {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-/* Вміст модалки */
-.modal-content {
-  background: #0b2342;
-  border-radius: 12px;
-  padding: 2rem 2.5rem;
-  width: 95%; /* Замість 90% */
-max-width: 550px !important;
-  max-height: 80vh;
-  overflow-y: auto;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none;
-  box-shadow: 0 12px 30px rgba(0, 40, 80, 0.7);
-  color: #e0e7ff;
-  font-size: 1rem;
-  line-height: 1.5;
-  text-align: left;
-  box-sizing: border-box;
-
-  transform: translateY(-40px);
-  opacity: 0;
-  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease;
-}
-
-.modal-content::-webkit-scrollbar {
-  display: none;
-}
-
-
-/* Анімація появи */
-.modal-overlay.active .modal-content {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-/* Заголовок */
-.modal-content h2 {
-  margin-top: 0;
-  margin-bottom: 1.5rem;
-  font-weight: 700;
-  font-size: 1.8rem;
-  color: #a8c0ff;
-  text-align: center;
-}
-
-/* Інпути та textarea */
-.modal-content input,
-.modal-content textarea {
-  width: 100%;
-  box-sizing: border-box;
-  margin-bottom: 1.25rem;
-  padding: 0.75rem 1rem;
-  border: 1.5px solid #204080;
-  border-radius: 8px;
-  font-size: 1rem;
-  background-color: #142a4b;
-  color: #d7e3fc;
-  transition: border-color 0.3s ease, background-color 0.3s ease;
-}
-
-.modal-content input::placeholder,
-.modal-content textarea::placeholder {
-  color: #a0b4d6;
-  opacity: 1;
-}
-
-.modal-content input:focus,
-.modal-content textarea:focus {
-  border-color: #7095ff;
-  background-color: #1c3a7d;
-  outline: none;
-  color: #f0f4ff;
-}
-
-.modal-content textarea {
-  resize: vertical;
-  min-height: 120px;
-  max-height: 180px;
-  overflow-y: auto;
-}
-
-/* Контейнер для кнопок */
-.modal-buttons {
-  display: flex;
-  gap: 1rem;
-  justify-content: flex-end;
-  margin-top: 1rem;
-}
-
-/* Кнопки */
-.modal-buttons button {
-  flex: 1;
-  padding: 0.75rem 1.2rem;
-  font-size: 1rem;
-  border-radius: 8px;
-  cursor: pointer;
-  border: none;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  transition: background-color 0.3s ease;
-}
-
-/* Кнопка "Fermer" меншою */
-.modal-buttons button.close-modal {
-  flex: 0 0 auto;
-  padding: 0.5rem 1rem;
-  background: transparent;
-  border: 2px solid #7095ff;
-  color: #7095ff;
-  font-weight: 600;
-}
-
-.modal-buttons button.close-modal:hover {
-  background-color: #7095ff;
-  color: #0b2342;
-}
-
-/* Кнопка "Envoyer" */
-.modal-buttons button[type="submit"] {
-  background-color: #506eff;
-  color: white;
-  font-weight: 600;
-}
-
-.modal-buttons button[type="submit"]:hover {
-  background-color: #7a95ff;
-}
-
-.modal-content p {
-  margin-bottom: 10px;
-}
-
-/* 18+ */
-
-/* Основний фон модалки */
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(10, 25, 50, 0.85);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10000;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.35s ease;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* Активна модалка */
-.modal-overlay.active {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-/* Вміст модалки */
-.modal-content {
-  background: #0b2342;
-  border-radius: 12px;
-  padding: 2rem 2.5rem;
-  max-width: 380px;
-  width: 90%;
-  box-shadow: 0 12px 30px rgba(0, 40, 80, 0.7);
-  color: #e0e7ff;
-  font-size: 1.5rem;
-  text-align: center;
-
-  transform: translateY(-40px);
-  opacity: 0;
-  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease;
-}
-
-/* Анімація появи */
-.modal-overlay.active .modal-content {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-/* Кнопки */
-.age-buttons {
-  margin-top: 2rem;
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-}
-
-.age-buttons button {
-  flex: 1;
-  padding: 0.75rem 1.2rem;
-  font-size: 1.2rem;
-  font-weight: 700;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  color: white;
-}
-
-/* Кнопка "Oui" - зелена */
-.age-buttons #ageYes {
-  background-color: #28a745;
-}
-
-.age-buttons #ageYes:hover {
-  background-color: #40c057;
-}
-
-/* Кнопка "Non" - червона */
-.age-buttons #ageNo {
-  background-color: #dc3545;
-}
-
-.age-buttons #ageNo:hover {
-  background-color: #e55360;
-}
+    /* modal 18+ */
+        .age-popup {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(18, 18, 18, 0.96);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          opacity: 0;
+          pointer-events: none;
+          transition: opacity 0.35s ease;
+          z-index: 9999;
+        }
+    
+        .age-popup.active {
+          opacity: 1;
+          pointer-events: auto;
+        }
+    
+        .age-popup-content {
+          background-color: #1e1e1e;
+          border: 2px solid #CD7F32;
+          border-radius: 12px;
+          padding: 30px 40px;
+          max-width: 400px;
+          width: 90%;
+          text-align: center;
+          box-shadow: 0 12px 30px rgba(0, 40, 80, 0.7);
+          color: #f1f1f1;
+          /* світлий текст */
+          font-family: Arial, sans-serif;
+        }
+    
+        .age-popup-content h1 {
+          font-size: 1.8rem;
+          margin-bottom: 20px;
+          color: #FFD700;
+          /* золотий акцент */
+        }
+    
+        .age-popup-content p {
+          margin-bottom: 25px;
+          font-size: 1.1rem;
+          line-height: 1.5;
+          color: #e0e0e0;
+        }
+    
+        .age-buttons {
+          display: flex;
+          justify-content: center;
+          gap: 15px;
+          flex-wrap: wrap;
+        }
+    
+        .btn {
+          padding: 12px 18px;
+          border-radius: 8px;
+          font-weight: 600;
+          text-transform: uppercase;
+          font-size: 1rem;
+          cursor: pointer;
+          border: none;
+          transition: background-color 0.3s ease, color 0.3s ease;
+          min-width: 150px;
+        }
+    
+        .btn-yes {
+          background-color: #C62828;
+          color: #fff;
+          border: 2px solid #C62828;
+        }
+    
+        .btn-yes:hover {
+          background-color: #D32F2F;
+          border-color: #FFD700;
+          color: #FFD700;
+        }
+    
+        .btn-no {
+          background-color: transparent;
+          color: #fff;
+          border: 2px solid #CD7F32;
+        }
+    
+        .btn-no:hover {
+          background-color: #CD7F32;
+          color: #121212;
+        }
 
 .page-container {
   max-width: 1100px;

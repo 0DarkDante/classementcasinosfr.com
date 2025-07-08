@@ -29,22 +29,6 @@
     <meta property="og:type" content="website" />
   </head>
   <body>
-    <!-- Pop-up 18+ -->
-    <div id="age-popup" class="age-popup">
-      <div class="age-popup-content">
-        <h1>🔞 Vérification d'âge</h1>
-        <p>
-          Vous devez avoir au moins 18 ans pour accéder à ce site. Avez-vous 18
-          ans ou plus ?
-        </p>
-        <div class="age-buttons">
-          <button id="btn-yes" class="btn btn-yes">
-            Oui, j'ai 18 ans ou plus
-          </button>
-          <button id="btn-no" class="btn btn-no">Non, je suis mineur</button>
-        </div>
-      </div>
-    </div>
     <header class="header">
       <div class="container">
         <div class="logo">
@@ -298,7 +282,7 @@
               <nav>
                 <ul>
                   <li>
-                    <a href="">Contact</a>
+                    <a href="#" id="triggerContactModal"">Contact</a>
                   </li>
                   <li>
                     <a href="./privacy_policy.html"
@@ -326,66 +310,19 @@
       </section>
     </footer>
 
-    <!-- modal -->
-    <div
-      id="contactModal"
-      class="modal-overlay"
-      aria-hidden="true"
-      role="dialog"
-      aria-labelledby="contactModalTitle"
-      tabindex="-1"
-    >
-      <div class="modal-content" role="document">
-        <h2 id="contactModalTitle">Contactez-nous</h2>
-        <p>
-          Pour toute question ou demande, veuillez remplir le formulaire
-          ci-dessous. Nous vous répondrons dans les plus brefs délais.
-        </p>
-        <form id="contactForm" novalidate>
-          <input type="text" name="name" placeholder="Votre nom" required />
-          <input
-            type="email"
-            name="email"
-            placeholder="Votre adresse e-mail"
-            required
-          />
-          <textarea
-            name="message"
-            placeholder="Votre message"
-            required
-          ></textarea>
-
-          <div class="modal-buttons">
-            <button type="submit">Envoyer</button>
-            <button
-              type="button"
-              id="closeContactModal"
-              class="close-modal"
-              aria-label="Fermer la fenêtre de contact"
-            >
-              Fermer
-            </button>
+    <!-- modal contact -->
+    <div id="contactOverlay" class="overlay-custom" aria-hidden="true" role="dialog" aria-labelledby="contactTitle" tabindex="-1">
+      <div class="modal-box-custom" role="document">
+        <h2 id="contactTitle">Contactez-nous</h2>
+        <form id="contactFormCustom" novalidate>
+          <input type="text" id="inputName" class="input-custom" name="name" placeholder="Votre nom" required />
+          <input type="email" id="inputEmail" class="input-custom" name="email" placeholder="Votre adresse e-mail" required />
+          <textarea id="inputMessage" class="textarea-custom" name="message" placeholder="Votre message" required></textarea>
+          <div class="button-group-custom">
+            <button type="submit" class="btn-submit-custom">Envoyer</button>
+            <button type="button" id="btnCloseModal" class="btn-close-custom" aria-label="Fermer la fenêtre de contact">Fermer</button>
           </div>
         </form>
-      </div>
-    </div>
-
-    <!-- 18+ -->
-
-    <div
-      id="ageModal"
-      class="modal-overlay"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="ageModalTitle"
-      tabindex="-1"
-    >
-      <div class="modal-content">
-        <h2 id="ageModalTitle">Avez-vous plus de 18 ans&nbsp;?</h2>
-        <div class="age-buttons">
-          <button id="ageYes">Oui</button>
-          <button id="ageNo">Non</button>
-        </div>
       </div>
     </div>
 
@@ -401,121 +338,109 @@
       </div>
     </div>
 
+    <!-- 18+ -->
+    <!-- Pop-up 18+ -->
+    <div id="age-popup" class="age-popup">
+    <div class="age-popup-content">
+      <h1>🔞 Vérification d'âge</h1>
+      <p>
+        Vous devez avoir au moins 18 ans pour accéder à ce site. Avez-vous 18
+        ans ou plus ?
+      </p>
+      <div class="age-buttons">
+        <button id="btn-yes" class="btn btn-yes">
+          Oui, j'ai 18 ans ou plus
+        </button>
+        <button id="btn-no" class="btn btn-no">Non, je suis mineur</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener("load", () => {
+      const agePopup = document.getElementById("age-popup");
+      const btnYes = document.getElementById("btn-yes");
+      const btnNo = document.getElementById("btn-no");
+    
+      // Показуємо модалку завжди (для тестів)
+      agePopup.classList.add("active");
+    
+      btnYes.addEventListener("click", () => {
+        agePopup.classList.remove("active");
+      });
+    
+      btnNo.addEventListener("click", () => {
+        alert("Vous devez avoir 18 ans ou plus pour accéder à ce site.");
+        window.location.href = "https://www.google.com";
+      });
+    });
+    
+  </script>
+    
+
+
     <script>
-      // Vérification si l'utilisateur a déjà pris une décision
-      document.addEventListener("DOMContentLoaded", () => {
+      document.addEventListener("DOMContentLoaded", function () {
         const banner = document.getElementById("cookie-banner");
         const acceptBtn = document.getElementById("accept-cookies");
         const rejectBtn = document.getElementById("reject-cookies");
 
-        // Для тесту – завжди показуємо банер:
-        banner.classList.add("visible");
+        const closeBanner = () => {
+          banner.style.display = "none";
+          // Якщо потрібно зберігати вибір:
+          // localStorage.setItem("cookiesChoice", "accepted" або "rejected")
+        };
 
-        acceptBtn.addEventListener("click", () => {
-          localStorage.setItem("cookieConsent", "accepted");
-          banner.classList.remove("visible");
-          console.log("Cookies acceptés");
-        });
-
-        rejectBtn.addEventListener("click", () => {
-          localStorage.setItem("cookieConsent", "rejected");
-          banner.classList.remove("visible");
-          console.log("Cookies refusés");
-        });
+        acceptBtn.addEventListener("click", closeBanner);
+        rejectBtn.addEventListener("click", closeBanner);
       });
     </script>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const agePopup = document.getElementById("age-popup");
-        const btnYes = document.getElementById("btn-yes");
-        const btnNo = document.getElementById("btn-no");
 
-        // Перевіряємо чи вже було підтвердження віку
-        const ageConfirmed = localStorage.getItem("ageConfirmed");
+   <script>
+  // Елементи
+  const triggerContact = document.getElementById("triggerContactModal");
+  const contactOverlay = document.getElementById("contactOverlay");
+  const btnCloseModal = document.getElementById("btnCloseModal");
+  const formCustom = document.getElementById("contactFormCustom");
 
-        if (ageConfirmed === "true") {
-          agePopup.style.display = "none"; // ховаємо попап
-        }
+  // Відкриваємо модалку
+  triggerContact.addEventListener("click", (e) => {
+    e.preventDefault();
+    contactOverlay.classList.add("visible");
+    contactOverlay.setAttribute("aria-hidden", "false");
+  });
 
-        btnYes.addEventListener("click", () => {
-          localStorage.setItem("ageConfirmed", "true");
-          agePopup.style.display = "none";
-        });
+  // Закриваємо модалку кнопкою
+  btnCloseModal.addEventListener("click", () => {
+    contactOverlay.classList.remove("visible");
+    contactOverlay.setAttribute("aria-hidden", "true");
+  });
 
-        btnNo.addEventListener("click", () => {
-          alert(
-            "Vous devez avoir 18 ans ou plus pour accéder à ce site. Vous allez être redirigé."
-          );
-          // Перенаправлення на інший сайт (наприклад google)
-          window.location.href = "https://www.google.com";
-        });
-      });
-    </script>
+  // Закриваємо модалку кліком поза вмістом
+  contactOverlay.addEventListener("click", (e) => {
+    if (e.target === contactOverlay) {
+      contactOverlay.classList.remove("visible");
+      contactOverlay.setAttribute("aria-hidden", "true");
+    }
+  });
 
-    <script>
-      // Відкриття модалки по кліку на посилання "Contact"
-      const contactLink = document.querySelector('nav ul li a[href=""]');
-      const contactModal = document.getElementById("contactModal");
-      const closeBtn = document.getElementById("closeContactModal");
+  // Закриваємо модалку по ESC
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && contactOverlay.classList.contains("visible")) {
+      contactOverlay.classList.remove("visible");
+      contactOverlay.setAttribute("aria-hidden", "true");
+    }
+  });
 
-      function openModal() {
-        contactModal.classList.remove("closing");
-        contactModal.classList.add("active");
-        contactModal.setAttribute("aria-hidden", "false");
-      }
-
-      function closeModal() {
-        contactModal.classList.remove("active");
-        contactModal.classList.add("closing");
-        contactModal.setAttribute("aria-hidden", "true");
-        setTimeout(() => {
-          contactModal.classList.remove("closing");
-        }, 300);
-      }
-
-      contactLink.addEventListener("click", function (e) {
-        e.preventDefault();
-        openModal();
-      });
-
-      closeBtn.addEventListener("click", closeModal);
-
-      // Закриття при кліку поза модалкою
-      contactModal.addEventListener("click", function (e) {
-        if (e.target === this) {
-          closeModal();
-        }
-      });
-
-      // Опціонально: Закриття модалки при натисканні Escape
-      document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape" && contactModal.classList.contains("active")) {
-          closeModal();
-        }
-      });
-    </script>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const ageModal = document.getElementById("ageModal");
-        const btnYes = document.getElementById("ageYes");
-        const btnNo = document.getElementById("ageNo");
-
-        // Показати модалку при завантаженні сторінки
-        ageModal.classList.add("active");
-
-        btnYes.addEventListener("click", () => {
-          // Користувач підтвердив, можна ховати модалку
-          ageModal.classList.remove("active");
-          // Тут можна додати логіку дозволу доступу
-        });
-
-        btnNo.addEventListener("click", () => {
-          // перенаправлення на інший сайт:
-          window.location.href = "https://www.google.com";
-        });
-      });
-    </script>
+  // Обробка відправки форми
+  formCustom.addEventListener("submit", (e) => {
+    e.preventDefault();
+    alert("Merci pour votre message !");
+    formCustom.reset();
+    contactOverlay.classList.remove("visible");
+    contactOverlay.setAttribute("aria-hidden", "true");
+  });
+</script>
   </body>
 </html>
