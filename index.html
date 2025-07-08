@@ -282,7 +282,7 @@
               <nav>
                 <ul>
                   <li>
-                    <a href="#" id="triggerContactModal"">Contact</a>
+                    <a href="#" id="triggerContactModal">Contact</a>
                   </li>
                   <li>
                     <a href="./privacy_policy.html"
@@ -311,16 +311,50 @@
     </footer>
 
     <!-- modal contact -->
-    <div id="contactOverlay" class="overlay-custom" aria-hidden="true" role="dialog" aria-labelledby="contactTitle" tabindex="-1">
+    <div
+      id="contactOverlay"
+      class="overlay-custom"
+      aria-hidden="true"
+      role="dialog"
+      aria-labelledby="contactTitle"
+      tabindex="-1"
+    >
       <div class="modal-box-custom" role="document">
         <h2 id="contactTitle">Contactez-nous</h2>
         <form id="contactFormCustom" novalidate>
-          <input type="text" id="inputName" class="input-custom" name="name" placeholder="Votre nom" required />
-          <input type="email" id="inputEmail" class="input-custom" name="email" placeholder="Votre adresse e-mail" required />
-          <textarea id="inputMessage" class="textarea-custom" name="message" placeholder="Votre message" required></textarea>
+          <input
+            type="text"
+            id="inputName"
+            class="input-custom"
+            name="name"
+            placeholder="Votre nom"
+            required
+          />
+          <input
+            type="email"
+            id="inputEmail"
+            class="input-custom"
+            name="email"
+            placeholder="Votre adresse e-mail"
+            required
+          />
+          <textarea
+            id="inputMessage"
+            class="textarea-custom"
+            name="message"
+            placeholder="Votre message"
+            required
+          ></textarea>
           <div class="button-group-custom">
             <button type="submit" class="btn-submit-custom">Envoyer</button>
-            <button type="button" id="btnCloseModal" class="btn-close-custom" aria-label="Fermer la fenêtre de contact">Fermer</button>
+            <button
+              type="button"
+              id="btnCloseModal"
+              class="btn-close-custom"
+              aria-label="Fermer la fenêtre de contact"
+            >
+              Fermer
+            </button>
           </div>
         </form>
       </div>
@@ -341,43 +375,40 @@
     <!-- 18+ -->
     <!-- Pop-up 18+ -->
     <div id="age-popup" class="age-popup">
-    <div class="age-popup-content">
-      <h1>🔞 Vérification d'âge</h1>
-      <p>
-        Vous devez avoir au moins 18 ans pour accéder à ce site. Avez-vous 18
-        ans ou plus ?
-      </p>
-      <div class="age-buttons">
-        <button id="btn-yes" class="btn btn-yes">
-          Oui, j'ai 18 ans ou plus
-        </button>
-        <button id="btn-no" class="btn btn-no">Non, je suis mineur</button>
+      <div class="age-popup-content">
+        <h1>🔞 Vérification d'âge</h1>
+        <p>
+          Vous devez avoir au moins 18 ans pour accéder à ce site. Avez-vous 18
+          ans ou plus ?
+        </p>
+        <div class="age-buttons">
+          <button id="btn-yes" class="btn btn-yes">
+            Oui, j'ai 18 ans ou plus
+          </button>
+          <button id="btn-no" class="btn btn-no">Non, je suis mineur</button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <script>
-    window.addEventListener("load", () => {
-      const agePopup = document.getElementById("age-popup");
-      const btnYes = document.getElementById("btn-yes");
-      const btnNo = document.getElementById("btn-no");
-    
-      // Показуємо модалку завжди (для тестів)
-      agePopup.classList.add("active");
-    
-      btnYes.addEventListener("click", () => {
-        agePopup.classList.remove("active");
-      });
-    
-      btnNo.addEventListener("click", () => {
-        alert("Vous devez avoir 18 ans ou plus pour accéder à ce site.");
-        window.location.href = "https://www.google.com";
-      });
-    });
-    
-  </script>
-    
+    <script>
+      window.addEventListener("load", () => {
+        const agePopup = document.getElementById("age-popup");
+        const btnYes = document.getElementById("btn-yes");
+        const btnNo = document.getElementById("btn-no");
 
+        // Показуємо модалку завжди (для тестів)
+        agePopup.classList.add("active");
+
+        btnYes.addEventListener("click", () => {
+          agePopup.classList.remove("active");
+        });
+
+        btnNo.addEventListener("click", () => {
+          alert("Vous devez avoir 18 ans ou plus pour accéder à ce site.");
+          window.location.href = "https://www.google.com";
+        });
+      });
+    </script>
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
@@ -396,51 +427,53 @@
       });
     </script>
 
+    <script>
+      // Елементи
+      const triggerContact = document.getElementById("triggerContactModal");
+      const contactOverlay = document.getElementById("contactOverlay");
+      const btnCloseModal = document.getElementById("btnCloseModal");
+      const formCustom = document.getElementById("contactFormCustom");
 
-   <script>
-  // Елементи
-  const triggerContact = document.getElementById("triggerContactModal");
-  const contactOverlay = document.getElementById("contactOverlay");
-  const btnCloseModal = document.getElementById("btnCloseModal");
-  const formCustom = document.getElementById("contactFormCustom");
+      // Відкриваємо модалку
+      triggerContact.addEventListener("click", (e) => {
+        e.preventDefault();
+        contactOverlay.classList.add("visible");
+        contactOverlay.setAttribute("aria-hidden", "false");
+      });
 
-  // Відкриваємо модалку
-  triggerContact.addEventListener("click", (e) => {
-    e.preventDefault();
-    contactOverlay.classList.add("visible");
-    contactOverlay.setAttribute("aria-hidden", "false");
-  });
+      // Закриваємо модалку кнопкою
+      btnCloseModal.addEventListener("click", () => {
+        contactOverlay.classList.remove("visible");
+        contactOverlay.setAttribute("aria-hidden", "true");
+      });
 
-  // Закриваємо модалку кнопкою
-  btnCloseModal.addEventListener("click", () => {
-    contactOverlay.classList.remove("visible");
-    contactOverlay.setAttribute("aria-hidden", "true");
-  });
+      // Закриваємо модалку кліком поза вмістом
+      contactOverlay.addEventListener("click", (e) => {
+        if (e.target === contactOverlay) {
+          contactOverlay.classList.remove("visible");
+          contactOverlay.setAttribute("aria-hidden", "true");
+        }
+      });
 
-  // Закриваємо модалку кліком поза вмістом
-  contactOverlay.addEventListener("click", (e) => {
-    if (e.target === contactOverlay) {
-      contactOverlay.classList.remove("visible");
-      contactOverlay.setAttribute("aria-hidden", "true");
-    }
-  });
+      // Закриваємо модалку по ESC
+      document.addEventListener("keydown", (e) => {
+        if (
+          e.key === "Escape" &&
+          contactOverlay.classList.contains("visible")
+        ) {
+          contactOverlay.classList.remove("visible");
+          contactOverlay.setAttribute("aria-hidden", "true");
+        }
+      });
 
-  // Закриваємо модалку по ESC
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && contactOverlay.classList.contains("visible")) {
-      contactOverlay.classList.remove("visible");
-      contactOverlay.setAttribute("aria-hidden", "true");
-    }
-  });
-
-  // Обробка відправки форми
-  formCustom.addEventListener("submit", (e) => {
-    e.preventDefault();
-    alert("Merci pour votre message !");
-    formCustom.reset();
-    contactOverlay.classList.remove("visible");
-    contactOverlay.setAttribute("aria-hidden", "true");
-  });
-</script>
+      // Обробка відправки форми
+      formCustom.addEventListener("submit", (e) => {
+        e.preventDefault();
+        alert("Merci pour votre message !");
+        formCustom.reset();
+        contactOverlay.classList.remove("visible");
+        contactOverlay.setAttribute("aria-hidden", "true");
+      });
+    </script>
   </body>
 </html>

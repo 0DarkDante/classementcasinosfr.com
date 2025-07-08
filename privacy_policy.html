@@ -146,12 +146,46 @@
             <div class="footer-text">
               <!-- <img src="./img/age-limit.png" alt="18+" /> -->
               <p>
-                CasinosComparesFR ne souhaite pas que ses informations soient
-                utilisées illégalement. Il vous revient de respecter l’âge légal
-                et les conditions des opérateurs de jeu. En continuant à
-                naviguer, vous acceptez nos conditions d’utilisation et notre
-                politique de confidentialité. CasinosComparesFR soutient la
-                lutte contre le jeu excessif avec SOS Joueurs (0810 600 115)
+                Le site <strong>classementcasinosfr.com</strong> ne souhaite pas
+                que ses informations soient exploitées de manière illégale. Il
+                est de votre responsabilité de respecter l’âge légal requis et
+                les conditions spécifiques à chaque opérateur de jeux.
+              </p>
+              <p>
+                En poursuivant votre navigation, vous confirmez accepter
+                <a href="/terms-of-use"
+                  >nos conditions générales d’utilisation</a
+                >
+                ainsi que
+                <a href="/privacy-policy">notre politique de confidentialité</a
+                >.
+              </p>
+              <p>
+                <strong>ClassementCasinosFR</strong> s’engage dans la prévention
+                du jeu problématique en collaborant avec
+                <a
+                  href="https://www.sosjoueurs.org/"
+                  target="_blank"
+                  rel="noopener"
+                  >SOS Joueurs (0810 600 115)</a
+                >,
+                <a
+                  href="https://gordonmoody.org.uk"
+                  target="_blank"
+                  rel="noopener"
+                  >GordonMoody</a
+                >
+                et
+                <a
+                  href="https://www.chpsaintgregoire.com"
+                  target="_blank"
+                  rel="noopener"
+                  >CHP Saint Grégoire</a
+                >.
+              </p>
+              <p>
+                <strong>18+</strong> - Ce site est strictement réservé aux
+                adultes.
               </p>
             </div>
             <div class="footer-links">
@@ -159,7 +193,7 @@
               <nav>
                 <ul>
                   <li>
-                    <a href="">Contact</a>
+                    <a href="#" id="triggerContactModal">Contact</a>
                   </li>
                   <li>
                     <a href="./privacy_policy.html"
@@ -180,48 +214,54 @@
             </div>
           </div>
           <div class="footer-cooperation">
-            <p>© 2025 CasinosComparesFR</p>
+            <p>© 2025 ClassementCasinosFR</p>
             <p>Réservés 2025</p>
           </div>
         </div>
       </section>
     </footer>
 
-    <!-- modal -->
+    <!-- modal contact -->
     <div
-      id="contactModal"
-      class="modal-overlay"
+      id="contactOverlay"
+      class="overlay-custom"
       aria-hidden="true"
       role="dialog"
-      aria-labelledby="contactModalTitle"
+      aria-labelledby="contactTitle"
       tabindex="-1"
     >
-      <div class="modal-content" role="document">
-        <h2 id="contactModalTitle">Contactez-nous</h2>
-        <p>
-          Pour toute question ou demande, veuillez remplir le formulaire
-          ci-dessous. Nous vous répondrons dans les plus brefs délais.
-        </p>
-        <form id="contactForm" novalidate>
-          <input type="text" name="name" placeholder="Votre nom" required />
+      <div class="modal-box-custom" role="document">
+        <h2 id="contactTitle">Contactez-nous</h2>
+        <form id="contactFormCustom" novalidate>
+          <input
+            type="text"
+            id="inputName"
+            class="input-custom"
+            name="name"
+            placeholder="Votre nom"
+            required
+          />
           <input
             type="email"
+            id="inputEmail"
+            class="input-custom"
             name="email"
             placeholder="Votre adresse e-mail"
             required
           />
           <textarea
+            id="inputMessage"
+            class="textarea-custom"
             name="message"
             placeholder="Votre message"
             required
           ></textarea>
-
-          <div class="modal-buttons">
-            <button type="submit">Envoyer</button>
+          <div class="button-group-custom">
+            <button type="submit" class="btn-submit-custom">Envoyer</button>
             <button
               type="button"
-              id="closeContactModal"
-              class="close-modal"
+              id="btnCloseModal"
+              class="btn-close-custom"
               aria-label="Fermer la fenêtre de contact"
             >
               Fermer
@@ -231,154 +271,119 @@
       </div>
     </div>
 
-    <!-- 18+ -->
-
-    <div
-      id="ageModal"
-      class="modal-overlay"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="ageModalTitle"
-      tabindex="-1"
-    >
-      <div class="modal-content">
-        <h2 id="ageModalTitle">Avez-vous plus de 18 ans&nbsp;?</h2>
-        <div class="age-buttons">
-          <button id="ageYes">Oui</button>
-          <button id="ageNo">Non</button>
-        </div>
-      </div>
-    </div>
-
     <!-- Bannière de cookies -->
-    <div id="cookie-banner" class="cookie-banner">
-      <div class="cookie-content">
+    <div id="cookie-banner">
+      <p>
+        Ce site utilise des cookies pour améliorer votre expérience. Vous pouvez
+        accepter ou refuser leur utilisation.
+      </p>
+      <div class="cookie-buttons">
+        <button id="accept-cookies" class="btn btn-accept">J’accepte</button>
+        <button id="reject-cookies" class="btn btn-reject">Je refuse</button>
+      </div>
+    </div>
+
+    <!-- 18+ -->
+    <!-- Pop-up 18+ -->
+    <div id="age-popup" class="age-popup">
+      <div class="age-popup-content">
+        <h1>🔞 Vérification d'âge</h1>
         <p>
-          Ce site utilise des cookies pour améliorer votre expérience. Vous
-          pouvez accepter ou refuser leur utilisation.
+          Vous devez avoir au moins 18 ans pour accéder à ce site. Avez-vous 18
+          ans ou plus ?
         </p>
-        <div class="cookie-buttons">
-          <button id="accept-cookies" class="btn btn-accept">J’accepte</button>
-          <button id="reject-cookies" class="btn btn-reject">Je refuse</button>
+        <div class="age-buttons">
+          <button id="btn-yes" class="btn btn-yes">
+            Oui, j'ai 18 ans ou plus
+          </button>
+          <button id="btn-no" class="btn btn-no">Non, je suis mineur</button>
         </div>
       </div>
     </div>
+
     <script>
-      // Vérification si l'utilisateur a déjà pris une décision
-      document.addEventListener("DOMContentLoaded", () => {
-        const banner = document.getElementById("cookie-banner");
-        const acceptBtn = document.getElementById("accept-cookies");
-        const rejectBtn = document.getElementById("reject-cookies");
-
-        const cookieConsent = localStorage.getItem("cookieConsent");
-
-        if (cookieConsent === "accepted" || cookieConsent === "rejected") {
-          banner.classList.add("hidden");
-        }
-
-        acceptBtn.addEventListener("click", () => {
-          localStorage.setItem("cookieConsent", "accepted");
-          banner.classList.add("hidden");
-          console.log("Cookies acceptés");
-        });
-
-        rejectBtn.addEventListener("click", () => {
-          localStorage.setItem("cookieConsent", "rejected");
-          banner.classList.add("hidden");
-          console.log("Cookies refusés");
-        });
-      });
-    </script>
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
+      window.addEventListener("load", () => {
         const agePopup = document.getElementById("age-popup");
         const btnYes = document.getElementById("btn-yes");
         const btnNo = document.getElementById("btn-no");
 
-        // Перевіряємо чи вже було підтвердження віку
-        const ageConfirmed = localStorage.getItem("ageConfirmed");
-
-        if (ageConfirmed === "true") {
-          agePopup.style.display = "none"; // ховаємо попап
-        }
+        // Показуємо модалку завжди (для тестів)
+        agePopup.classList.add("active");
 
         btnYes.addEventListener("click", () => {
-          localStorage.setItem("ageConfirmed", "true");
-          agePopup.style.display = "none";
+          agePopup.classList.remove("active");
         });
 
         btnNo.addEventListener("click", () => {
-          alert(
-            "Vous devez avoir 18 ans ou plus pour accéder à ce site. Vous allez être redirigé."
-          );
-          // Перенаправлення на інший сайт (наприклад google)
+          alert("Vous devez avoir 18 ans ou plus pour accéder à ce site.");
           window.location.href = "https://www.google.com";
         });
       });
     </script>
 
     <script>
-      // Відкриття модалки по кліку на посилання "Contact"
-      const contactLink = document.querySelector('nav ul li a[href=""]');
-      const contactModal = document.getElementById("contactModal");
-      const closeBtn = document.getElementById("closeContactModal");
+      document.addEventListener("DOMContentLoaded", function () {
+        const banner = document.getElementById("cookie-banner");
+        const acceptBtn = document.getElementById("accept-cookies");
+        const rejectBtn = document.getElementById("reject-cookies");
 
-      function openModal() {
-        contactModal.classList.remove("closing");
-        contactModal.classList.add("active");
-        contactModal.setAttribute("aria-hidden", "false");
-      }
+        const closeBanner = () => {
+          banner.style.display = "none";
+          // Якщо потрібно зберігати вибір:
+          // localStorage.setItem("cookiesChoice", "accepted" або "rejected")
+        };
 
-      function closeModal() {
-        contactModal.classList.remove("active");
-        contactModal.classList.add("closing");
-        contactModal.setAttribute("aria-hidden", "true");
-        setTimeout(() => {
-          contactModal.classList.remove("closing");
-        }, 300);
-      }
+        acceptBtn.addEventListener("click", closeBanner);
+        rejectBtn.addEventListener("click", closeBanner);
+      });
+    </script>
 
-      contactLink.addEventListener("click", function (e) {
+    <script>
+      // Елементи
+      const triggerContact = document.getElementById("triggerContactModal");
+      const contactOverlay = document.getElementById("contactOverlay");
+      const btnCloseModal = document.getElementById("btnCloseModal");
+      const formCustom = document.getElementById("contactFormCustom");
+
+      // Відкриваємо модалку
+      triggerContact.addEventListener("click", (e) => {
         e.preventDefault();
-        openModal();
+        contactOverlay.classList.add("visible");
+        contactOverlay.setAttribute("aria-hidden", "false");
       });
 
-      closeBtn.addEventListener("click", closeModal);
+      // Закриваємо модалку кнопкою
+      btnCloseModal.addEventListener("click", () => {
+        contactOverlay.classList.remove("visible");
+        contactOverlay.setAttribute("aria-hidden", "true");
+      });
 
-      // Закриття при кліку поза модалкою
-      contactModal.addEventListener("click", function (e) {
-        if (e.target === this) {
-          closeModal();
+      // Закриваємо модалку кліком поза вмістом
+      contactOverlay.addEventListener("click", (e) => {
+        if (e.target === contactOverlay) {
+          contactOverlay.classList.remove("visible");
+          contactOverlay.setAttribute("aria-hidden", "true");
         }
       });
 
-      // Опціонально: Закриття модалки при натисканні Escape
-      document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape" && contactModal.classList.contains("active")) {
-          closeModal();
+      // Закриваємо модалку по ESC
+      document.addEventListener("keydown", (e) => {
+        if (
+          e.key === "Escape" &&
+          contactOverlay.classList.contains("visible")
+        ) {
+          contactOverlay.classList.remove("visible");
+          contactOverlay.setAttribute("aria-hidden", "true");
         }
       });
-    </script>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const ageModal = document.getElementById("ageModal");
-        const btnYes = document.getElementById("ageYes");
-        const btnNo = document.getElementById("ageNo");
-
-        // Показати модалку при завантаженні сторінки
-        ageModal.classList.add("active");
-
-        btnYes.addEventListener("click", () => {
-          // Користувач підтвердив, можна ховати модалку
-          ageModal.classList.remove("active");
-          // Тут можна додати логіку дозволу доступу
-        });
-
-        btnNo.addEventListener("click", () => {
-          // перенаправлення на інший сайт:
-          window.location.href = "https://www.google.com";
-        });
+      // Обробка відправки форми
+      formCustom.addEventListener("submit", (e) => {
+        e.preventDefault();
+        alert("Merci pour votre message !");
+        formCustom.reset();
+        contactOverlay.classList.remove("visible");
+        contactOverlay.setAttribute("aria-hidden", "true");
       });
     </script>
   </body>
